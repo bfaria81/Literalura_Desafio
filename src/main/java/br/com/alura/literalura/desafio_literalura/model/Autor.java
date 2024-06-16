@@ -1,7 +1,12 @@
 package br.com.alura.literalura.desafio_literalura.model;
 
-public class Autor {
+import jakarta.persistence.*;
 
+@Entity
+@Table (name = "autores")
+public class Autor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String autor;
     private Integer nascimento;
