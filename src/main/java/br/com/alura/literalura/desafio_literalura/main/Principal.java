@@ -94,7 +94,7 @@ public class Principal {
             Autor autor = new Autor(dadosLivros.resultados().get(0).autorList().get(0));
 
             System.out.println("""
-                    livro[
+                    Livro[
                         titulo: %s
                         autor: %s
                         linguagem: %s
