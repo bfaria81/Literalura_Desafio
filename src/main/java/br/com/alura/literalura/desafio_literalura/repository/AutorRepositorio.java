@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface AutorRepositorio extends JpaRepository<Autor, Long> {
-    @Query("SELECT a FROM  a WHERE a.nascimento >= :anoBuscado ORDER BY a.nascimento ASC")
+    @Query("SELECT a FROM Autor a WHERE a.nascimento >= :anoBuscado ORDER BY a.nascimento ASC")
     List<Autor> autorPorData(int anoBuscado);
 }
