@@ -32,7 +32,7 @@ public class Principal {
         while (opcao != 0){
             var menu = """
                     ***-----------------------------***
-                       Buscadoe de Livres Literalura   
+                       Buscador de Livros Literalura   
                     ***-----------------------------***
                     
                     Selecione uma opção:
@@ -99,7 +99,7 @@ public class Principal {
                         autor: %s
                         linguagem: %s
                         numeroDownloads: %s
-                        ]
+                    ]
                     """.formatted(livro.getTitulo(),
                     livro.getAutor(),
                     livro.getLinguagem(),
@@ -113,19 +113,91 @@ public class Principal {
     }
 
     private void consultarLivro(){
-
+        livros = livroRepositorio.findAll();
+        livros.stream().forEach(l -> {
+            System.out.println("""
+                    Titulo: %s
+                    Autor: %s
+                    Linguagem: %s
+                    NumeroDownloads: %s
+                    """.formatted(l.getTitulo(),
+                    l.getAutor(),
+                    l.getLinguagem(),
+                    l.getNumeroDownloads().toString()));
+        });
     }
 
     private void consultarAutor(){
-
+        autores = autorRepositorio.findAll();
+        autores.stream().forEach(a ->{
+            System.out.println("""
+                    Autor: %s
+                    Ano de Nascimento: %s
+                    Ano de Falecimento: %s
+                    """.formatted(a.getAutor(),
+                    a.getNascimento().toString(),
+                    a.getFalecimento().toString()));
+        });
     }
 
     private void consultarAutoresPorAno(){
+        System.out.println("Insira o ano que deseja buscar:");
+        var anoBuscado = scanner.nextInt();
+        scanner.nextLine();
+
+        List<Autor> autors = autorRepositorio.autorPorData(anoBuscado);
+        autors.forEach(a -> {
+            System.out.println("""
+                    Nome: %s
+                    Data de nascimento: %s
+                    Data de falecimento: %s
+                    """.formatted(a.getAutor(),
+                    a.getNascimento().toString(),
+                    a.getFalecimento().toString()));
+        });
 
     }
 
     private void consultarLivrosPorLinguagem(){
+        System.out.println("""
+                ***---------------------------------------------------***
+                   Escolha uma linguagem do livro que dejesa consultar 
+                ***---------------------------------------------------***
+                1 - En (Inglês)
+                2 - Es (Espanhol)
+                3 - Fr (Francês)
+                """);
+        try {
+            var opcaoLinguagem = scanner.nextInt();
+            scanner.nextLine();
 
+            switch (opcaoLinguagem){
+                case 1:
+                    livros = livroRepositorio.findByLinguagem("en");
+                    break;
+                case 2:
+                    livros = livroRepositorio.findByLinguagem("es");
+                    break;
+                case 3:
+                    livros = livroRepositorio.findByLinguagem("fr");
+                    break;
+                default:
+                    System.out.println("Digite uma opção válida!");
+            }
+
+            livros.stream().forEach(l ->{
+                System.out.println("""
+                        Titulo: %s
+                        Autor: %s
+                        Linguagem: %s
+                        NumeroDownloads: %s
+                        """.formatted(l.getTitulo(),
+                        l.getAutor(),
+                        l.getLinguagem(),
+                        l.getNumeroDownloads().toString()));
+            });
+        } catch (Exception e){
+            System.out.println("Digite uma opção válida!");
+        }
     }
-
 }
