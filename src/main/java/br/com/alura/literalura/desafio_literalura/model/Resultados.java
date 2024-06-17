@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record Resultados(@JsonAlias("titulo") String titulo,
-                         @JsonAlias("autores") List<DadosAutor> autorList,
-                         @JsonAlias("linguagem") List<String> linguagem,
-                         @JsonAlias("contador_download") Integer numeroDownloads) {
+public record Resultados(@JsonAlias("title") String titulo,
+                         @JsonAlias("authors") List<DadosAutor> autorList,
+                         @JsonAlias("languages") List<String> linguagem,
+                         @JsonAlias("download_count") Integer numeroDownloads) {
 }

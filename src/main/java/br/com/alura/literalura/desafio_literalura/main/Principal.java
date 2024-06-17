@@ -166,6 +166,7 @@ public class Principal {
                 1 - En (Inglês)
                 2 - Es (Espanhol)
                 3 - Fr (Francês)
+                4 - Pt (Português)
                 """);
         try {
             var opcaoLinguagem = scanner.nextInt();
@@ -180,6 +181,9 @@ public class Principal {
                     break;
                 case 3:
                     livros = livroRepositorio.findByLinguagem("fr");
+                    break;
+                case 4:
+                    livros = livroRepositorio.findByLinguagem("pt");
                     break;
                 default:
                     System.out.println("Digite uma opção válida!");
