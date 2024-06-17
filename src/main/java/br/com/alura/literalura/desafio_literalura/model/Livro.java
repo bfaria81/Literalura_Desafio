@@ -14,6 +14,8 @@ public class Livro{
     private String titulo;
     private String linguagem;
     private Integer numeroDownloads;
+    private String genero;
+
 
     public Livro(){}
 
@@ -21,6 +23,7 @@ public class Livro{
         this.titulo = dadosLivro.titulo();
         this.autor = dadosLivro.autorList().get(0).nomeAutor();
         this.linguagem = dadosLivro.linguagem().get(0);
+        this.genero = dadosLivro.genero().get(0);
         this.numeroDownloads = dadosLivro.numeroDownloads();
     }
 
@@ -62,5 +65,13 @@ public class Livro{
 
     public void setNumeroDownloads(Integer numeroDownloads) {
         this.numeroDownloads = numeroDownloads;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 }

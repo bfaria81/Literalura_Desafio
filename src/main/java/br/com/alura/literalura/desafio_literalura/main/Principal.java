@@ -119,10 +119,12 @@ public class Principal {
                     Titulo: %s
                     Autor: %s
                     Linguagem: %s
+                    Genero: %s
                     NumeroDownloads: %s
                     """.formatted(l.getTitulo(),
                     l.getAutor(),
                     l.getLinguagem(),
+                    l.getGenero(),
                     l.getNumeroDownloads().toString()));
         });
     }
